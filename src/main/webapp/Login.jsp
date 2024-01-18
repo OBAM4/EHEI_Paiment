@@ -18,18 +18,18 @@
              class="img-fluid" alt="Sample image">
       </div>
       <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-        <form method="get">
+        <form method="post" action="LoginEtudiant">
           <!-- Email input -->
           <div class="form-outline mb-4">
-            <input type="email" id="form3Example3" class="form-control form-control-lg"
+            <input type="email" name="txtEmail" class="form-control form-control-lg"
                    placeholder="Enter a valid email address" />
-            <label class="form-label" for="form3Example3">Email address</label>
+            <label class="form-label" >Email address</label>
           </div>
           <!-- Password input -->
           <div class="form-outline mb-3">
-            <input type="password" id="form3Example4" class="form-control form-control-lg"
+            <input type="password" name="txtpass" class="form-control form-control-lg"
                    placeholder="Enter password" />
-            <label class="form-label" for="form3Example4">Password</label>
+            <label class="form-label" >Password</label>
           </div>
 
           <div class="d-flex justify-content-between align-items-center">
@@ -42,7 +42,7 @@
           </div>
 
           <div class="text-center text-lg-start mt-4 pt-2">
-            <button type="button" class="btn btn-primary btn-lg"
+            <button type="submit" class="btn btn-primary btn-lg"
                     style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
             <p class="small fw-bold mt-2 pt-1 mb-0"><a href="LoginAdmin.jsp"
                                                                               class="link-danger">Espace admin</a></p>
