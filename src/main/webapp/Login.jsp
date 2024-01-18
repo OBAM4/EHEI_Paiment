@@ -1,14 +1,5 @@
- <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<!DOCTYPE html>
-<html>
-<head>
-  <title>EHEI Transfer</title>
-
-  <link rel="stylesheet" type="text/css" href="style/style.css">
-  <link rel="icon" type="image/x-icon" href="img/logo_haute_qualité.png">
-
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-</head>
+<%@include file="/WEB-INF/jspf/header.jspf" %>
+<link rel="stylesheet" type="text/css" href="style/style.css">
 <body>
 <section class="vh-100">
   <div class="container-fluid h-custom">
@@ -56,8 +47,8 @@
           class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
     <!-- Copyright -->
     <div class="text-white mb-3 mb-md-0">
-      Copyright © 2020. All rights reserved .
-      <a href="http://tech-nova.site"> devloped by Technova </a>
+      Copyright � 2020. All rights reserved .
+      <a href="http://tech-nova.site"> developed by Technova </a>
     </div>
     <!-- Copyright -->
 

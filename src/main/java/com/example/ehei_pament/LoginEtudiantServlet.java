@@ -1,8 +1,8 @@
 package com.example.ehei_pament;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
+import javax.servlet.ServletException;
+import javax.servlet.http.*;
+import javax.servlet.annotation.*;
 
 import java.io.IOException;
 import java.sql.*;
@@ -10,6 +10,12 @@ import java.sql.*;
 @WebServlet(name = "LoginEtudiantServlet", value = "/LoginEtudiant")
 public class LoginEtudiantServlet extends HttpServlet {
 
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		req.getRequestDispatcher("Login.jsp").forward(req, resp);;
+	}
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -33,19 +39,11 @@ public class LoginEtudiantServlet extends HttpServlet {
 
             if(rs.next())
             {
-
-
-
-
                 String nom = rs.getString("Nom");
                 String prenom = rs.getString("Prenom");
-
-
                 HttpSession session = req.getSession();
-
-
+                session.removeAttribute("estAdmin");
                 session.setAttribute("nomComplet" , nom + " " + prenom);
-
                 resp.sendRedirect("Home_Etudiant.jsp");
             }
             else

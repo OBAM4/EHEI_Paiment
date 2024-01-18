@@ -1,24 +1,22 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: WALID-PC
-  Date: 1/18/2024
-  Time: 11:00 AM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.example.ehei_pament.Etudiant"%>
+<%@include file="/WEB-INF/jspf/header.jspf" %>
+<%
+	String messageSucces = (String)request.getAttribute("messageSucces");
+	String messageErreur = (String)request.getAttribute("messageErreur");
+%>
 
-    <title>Admin Panel</title>
-</head>
-<% String query = request.getQueryString(); %>
-<body>
-<main class="container" style="min-width: 90vw">
-    <img src="img/logo_haute_qualité.png" width="150">
+    <img src="img/logo_haute_qualit�.png" width="150">
     <div class="row p-3" style="height: 100vh;">
-        <%if(query != null && query.split("&")[0].equals("ajouter")){%>
-            <p>Etudiant a été ajouté</p>
+    	<%if(messageSucces != null){%>
+    	<div class="alert alert-success" role="alert">
+  			<%= messageSucces %>
+		</div>
+        <% } %>
+        <%if(messageErreur != null){%>
+    	<div class="alert alert-danger" role="alert">
+  			<%= messageErreur %>
+		</div>
         <% } %>
         <div class="col-6" >
             <form class="d-flex justify-content-around align-items-center">
@@ -33,9 +31,25 @@
                     <th>Email</th>
                     <th>Annee Scolaire Debut</th>
                     <th>Annee Scolaire Fin</th>
+                    <th>Actions</th>
                 </tr>
                 </thead>
-                <tbody></tbody>
+                <tbody>
+                	<% for
+                	(Etudiant etudiant: (ArrayList<Etudiant>)request.getAttribute("etudiants") ) {
+                	%>
+                		<tr>
+                			<td><%= etudiant.getNom() %> </td>
+                			<td><%= etudiant.getPrenom() %> </td>
+                			<td><%= etudiant.getEmail() %> </td>
+                			<td><%= etudiant.getAnnneScolaireDebut() %> </td>
+                			<td><%= etudiant.getAnnneScolaireFin() %> </td>
+                			<td>
+                				<a class="btn btn-danger" href="#" >Supprimer</a>
+                			</td>
+                		</tr>
+                	<%} %>
+                </tbody>
             </table>
         </div>
 
@@ -65,12 +79,12 @@
                     </div>
 
                     <div class="form-outline mb-4">
-                        <input type="date" name="Debut" class="form-control form-control-lg"
+                        <input type="number" name="Debut" class="form-control form-control-lg"
                                placeholder="Enter date debut" />
                     </div>
 
                     <div class="form-outline mb-4">
-                        <input type="date" name="Fin" class="form-control form-control-lg"
+                        <input type="number" name="Fin" class="form-control form-control-lg"
                                placeholder=" Enter date fin" />
                     </div>
 

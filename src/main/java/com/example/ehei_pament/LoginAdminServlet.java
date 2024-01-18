@@ -1,8 +1,9 @@
 package com.example.ehei_pament;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
+import javax.servlet.ServletException;
+import javax.servlet.http.*;
+import javax.servlet.annotation.*;
 
 import java.io.IOException;
 import java.sql.*;
@@ -10,6 +11,12 @@ import java.sql.*;
 @WebServlet(name = "LoginAdminServlet", value = "/LoginAdmin")
 public class LoginAdminServlet extends HttpServlet {
 
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		req.getRequestDispatcher("LoginAdmin.jsp").forward(req, resp);
+	}
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -28,7 +35,11 @@ public class LoginAdminServlet extends HttpServlet {
 
             if(rs.next())
             {
-                resp.sendRedirect("Home_Admin.jsp");
+            	String nomComplet = rs.getString("Nom") + " " + rs.getString("Prenom");
+            	HttpSession session = req.getSession();
+            	session.setAttribute("estAdmin", true);
+            	session.setAttribute("nomComplet", nomComplet);
+                resp.sendRedirect("HomeAdmin");
             }
             else
             {

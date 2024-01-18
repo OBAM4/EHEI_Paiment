@@ -1,11 +1,11 @@
 package com.example.ehei_pament;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -14,10 +14,15 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 
-@WebServlet(name = "AddEtudiant", value = "/AddEtudiant")
+@WebServlet("/AddEtudiant")
 public class AddEtudiant extends HttpServlet {
 
-    @Override
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         try {
@@ -49,7 +54,8 @@ public class AddEtudiant extends HttpServlet {
             cmd.setString(6,Fin);
 
             cmd.execute();
-            resp.sendRedirect("Home_Admin.jsp?ajouter");
+            req.getSession().setAttribute("messageSucces", "Etudiant a été ajouté avec succès");
+            resp.sendRedirect("HomeAdmin");
 
 
 
