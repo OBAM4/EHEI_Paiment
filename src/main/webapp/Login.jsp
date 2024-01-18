@@ -1,4 +1,4 @@
-d<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+ <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +10,6 @@ d<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
-
 <section class="vh-100">
   <div class="container-fluid h-custom">
     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -20,19 +19,12 @@ d<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
       </div>
       <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
         <form method="get">
-
-          <div>
-
-            <a href="Welcom.jsp">Welcom</a>
-          </div>
-
           <!-- Email input -->
           <div class="form-outline mb-4">
             <input type="email" id="form3Example3" class="form-control form-control-lg"
                    placeholder="Enter a valid email address" />
             <label class="form-label" for="form3Example3">Email address</label>
           </div>
-
           <!-- Password input -->
           <div class="form-outline mb-3">
             <input type="password" id="form3Example4" class="form-control form-control-lg"
@@ -52,8 +44,8 @@ d<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
           <div class="text-center text-lg-start mt-4 pt-2">
             <button type="button" class="btn btn-primary btn-lg"
                     style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
-            <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="Register.jsp"
-                                                                              class="link-danger">Register</a></p>
+            <p class="small fw-bold mt-2 pt-1 mb-0"><a href="LoginAdmin.jsp"
+                                                                              class="link-danger">Espace admin</a></p>
           </div>
 
         </form>
@@ -93,4 +85,8 @@ d<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 
 </body>
+<script
+        src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous"></script>
 </html>
