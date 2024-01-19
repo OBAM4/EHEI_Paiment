@@ -6,7 +6,6 @@
 	String messageErreur = (String)request.getAttribute("messageErreur");
 %>
 
-    <img src="img/logo_haute_qualité.png" width="150">
     <div class="row p-3" style="height: 100vh;">
     	<%if(messageSucces != null){%>
     	<div class="alert alert-success" role="alert">
@@ -92,7 +91,18 @@
 
                 </form>
             </div>
+
+            <form method="post" action="DeleteEtudiant" style="margin-top: 20px">
+                <div class="form-outline mb-4">
+                    <input type="text" name="supp" class="form-control form-control-lg"
+                            />
+                </div>
+
+                <button type="submit" class="btn btn-danger">Supprimer</button>
+            </form>
+
         </div>
+
 
     </div>
 </main>
