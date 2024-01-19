@@ -94,14 +94,51 @@
 
             <form method="post" action="DeleteEtudiant" style="margin-top: 20px">
                 <div class="form-outline mb-4">
-                    <input type="text" name="supp" class="form-control form-control-lg"
-                            />
+                    <input type="text" name="supp" class="form-control form-control-lg"/>
                 </div>
 
                 <button type="submit" class="btn btn-danger">Supprimer</button>
             </form>
 
+            <form method="post" action="UpdateE " style="margin-top: 20px">
+                <div class="form-outline mb-4">
+                    <input type="text" name="txtNomAq" class="form-control form-control-lg" placeholder="Enter Nom"  />
+
+                </div>
+
+                <div class="form-outline mb-4">
+                    <input type="text" name="txtPrenomAq" class="form-control form-control-lg"
+                           placeholder="Enter Prenom" />
+
+                </div>
+                <div class="form-outline mb-4">
+                    <input type="text" name="txtpassAq" class="form-control form-control-lg"
+                           placeholder="Enter password" />
+
+                </div>
+                <div class="form-outline mb-4">
+                    <input type="text" name="txtEmailAq" class="form-control form-control-lg"
+                           placeholder="Enter Email" />
+                </div>
+
+                <div class="form-outline mb-4">
+                    <input type="number" name="Debutq" class="form-control form-control-lg"
+                           placeholder="Enter date debut" />
+                </div>
+
+                <div class="form-outline mb-4">
+                    <input type="number" name="Finq" class="form-control form-control-lg"
+                           placeholder=" Enter date fin" />
+                </div>
+
+                <button type="submit" class="btn btn-success">Modifier</button>
+            </form>
+
+
+
         </div>
+
+
 
 
     </div>
