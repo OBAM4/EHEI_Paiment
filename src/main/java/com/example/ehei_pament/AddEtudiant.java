@@ -41,6 +41,17 @@ public class AddEtudiant extends HttpServlet {
             String Debut = req.getParameter("Debut");
 
             String Fin = req.getParameter("Fin");
+            
+            try {
+            	int DebutInt = Integer.parseInt(Debut);
+            	int FinInt = Integer.parseInt(Fin);
+            	if(DebutInt >= FinInt) {
+            		resp.sendRedirect("HomeAdmin");
+            		return;
+            	}
+            }catch(Exception ex) {
+            	
+            }
 
             PreparedStatement cmd =  cnx.prepareStatement("INSERT INTO etudiant (Nom, Prenom, Password , Email , Annee_Scolaire_Debut  , Annee_Scolaire_Fin )"
                     +  "VALUES (?, ?, ?, ? , ? , ?); ");
@@ -56,14 +67,6 @@ public class AddEtudiant extends HttpServlet {
             cmd.execute();
             req.getSession().setAttribute("messageSucces", "Etudiant a été ajouté avec succès");
             resp.sendRedirect("HomeAdmin");
-
-
-
-
-
-
-
-
 
 
 

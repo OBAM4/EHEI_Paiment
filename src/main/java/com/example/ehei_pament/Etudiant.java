@@ -80,6 +80,54 @@ public class Etudiant {
 	public void setAnnneScolaireFin(int anneScolaireFin) {
 		AnneScolaireFin = anneScolaireFin;
 	}
+	public ArrayList<Etudiant> getByNom(String nomSaisie) {
+		ArrayList<Etudiant> etudiants = new ArrayList<Etudiant>();
+		PreparedStatement cmd;
+		try {
+			cmd = cnx.prepareStatement("select * from etudiant where Nom LIKE ?");
+	        cmd.setString(1,"%"+nomSaisie+"%");
+	        ResultSet rs = cmd.executeQuery();
+	        while(rs.next()) {
+	        	String nom = rs.getString("Nom");
+	        	String prenom = rs.getString("Prenom");
+	        	String email = rs.getString("Email");
+	        	String motDePasse = rs.getString("Password");
+	        	int anneScolaireDebut = rs.getInt("Annee_Scolaire_Debut");
+	        	int anneScolaireFin = rs.getInt("Annee_Scolaire_Fin");
+	        	etudiants.add(new Etudiant
+	        			(
+	        					nom, prenom, email, motDePasse, anneScolaireDebut,
+	        					anneScolaireFin
+	        			));
+	        }
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return etudiants;
+	}
+	public void getById(int id) {
+		PreparedStatement stmt;
+		try {
+			stmt = cnx.prepareStatement(
+					"SELECT * FROM Etudiant WHERE Id=?"
+					);
+			stmt.setInt(1, id);
+			ResultSet rs = stmt.executeQuery();
+			if(rs.next()) {
+				Nom = rs.getString("Nom");
+				Prenom = rs.getString("Prenom");
+				Email = rs.getString("Email");
+				Password = rs.getString("Password");
+				AnneScolaireDebut = rs.getInt("Annee_Scolaire_Debut");
+				AnneScolaireFin = rs.getInt("Annee_Scolaire_Fin");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 	public ArrayList<Etudiant> getAll() {
 		ArrayList<Etudiant> etudiants = new ArrayList<Etudiant>();
 		try {
@@ -103,5 +151,25 @@ public class Etudiant {
 			e.printStackTrace();
 		}
 		return etudiants;
+	}
+	public ArrayList<Integer> getTousPaiement(int id, int annee) {
+		ArrayList<Integer> lesMois = new ArrayList<Integer>();
+		try {
+			PreparedStatement stmt = cnx.prepareStatement(
+					"SELECT MONTH(Date_Paiement) as mois FROM Paiement where Id_Etudiant=?" + 
+			" and YEAR(Date_Paiement)=?"
+					);
+			stmt.setInt(1, id);
+			stmt.setInt(2, annee);
+			ResultSet rs = stmt.executeQuery();
+			while(rs.next()) {
+				int mois = rs.getInt("mois");
+				lesMois.add(mois);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return lesMois;
 	}
 }

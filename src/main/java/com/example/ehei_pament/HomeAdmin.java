@@ -35,9 +35,17 @@ public class HomeAdmin extends HttpServlet {
 			response.sendRedirect("LoginAdmin");
 			return;
 		}
-		Etudiant etudiant = new Etudiant();
-		ArrayList<Etudiant> etudiants = etudiant.getAll();
-		request.setAttribute("etudiants", etudiants);
+		ArrayList<Etudiant> etudiantRechercher = (ArrayList<Etudiant>)
+				session.getAttribute("etudiantsRechercher");
+		if(etudiantRechercher != null) {
+			session.removeAttribute("etudiantsRechercher");
+			request.setAttribute("etudiants", etudiantRechercher);
+		} else {
+			Etudiant etudiant = new Etudiant();
+			ArrayList<Etudiant> etudiants = etudiant.getAll();
+			
+			request.setAttribute("etudiants", etudiants);	
+		}
 		//
 		String messageSucces = (String)session.getAttribute("messageSucces");
 		String messageErreur= (String)session.getAttribute("messageErreur");
@@ -49,6 +57,7 @@ public class HomeAdmin extends HttpServlet {
 			session.removeAttribute("messageErreur");
 			request.setAttribute("messageErreur", messageErreur);
 		}
+		
 		request.getRequestDispatcher("Home_Admin.jsp").forward(request, response);
 	}
 

@@ -19,8 +19,8 @@
 		</div>
         <% } %>
         <div class="col-6" >
-            <form class="d-flex justify-content-around align-items-center">
-                <input type="search" name="textNomaa" class="form-control form-control-lg w-50" placeholder="Rechercher Etudiant" />
+            <form action="RechercherEtudiant" class="d-flex justify-content-around align-items-center">
+                <input type="search" name="nom" class="form-control form-control-lg w-50" placeholder="Rechercher Etudiant" />
                 <button type="submit" class="btn btn-primary btn-lg">Rechercher</button>
             </form>
             <table class="table bordered-table">
@@ -116,5 +116,4 @@
         });
     });
 </script>
-
-</html>
+<%@include file="/WEB-INF/jspf/footer.jspf" %>
